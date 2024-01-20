@@ -1,0 +1,40 @@
+<script>
+    const PIN = "6262"
+
+    let pin = ""
+    let tries = 0
+    let balance = 100000.00
+
+    while (true) {
+        pin = prompt("Introduce-ti PIN cod-ul: ")
+
+        tries++
+
+        if (pin == PIN) {
+            alert(`Acces permis!\n\n
+            Soldul dvs = ${balance}MDL`)
+            
+            let money = +prompt("Ce suma doriti sa retrageti?")
+
+            if (money>balance) {
+                alert("EROARE: Fonduri insuficiente!")
+            } else if (money>10000) {
+                alert("EROARE: Limita de retragere este de 10000 MDL")
+            } else {
+                balance -= money
+    
+                alert(`Tranzactie efectuata cu succes!\n\n
+                Soldul dvs = ${balance}MDL`)
+                break
+            }
+
+        } else {
+            alert("EROARE: PIN gresit!")
+            if(tries==3) {
+                alert("Cardul dvs este blocat!")
+                break
+            }
+        }
+    }
+
+</script>
